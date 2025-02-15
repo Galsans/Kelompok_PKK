@@ -19,7 +19,10 @@ return new class extends Migration
             $table->enum('status', ['pending', 'confirm', 'cancel'])->default('pending');
             $table->enum('type_room', ['suite', 'deluxe', 'standard']);
             $table->integer('guest_count');
+            $table->datetime('check_in');
+            $table->datetime('check_out')->nullable();
             $table->foreignId('room_id')->nullable()->constrained('rooms');
+            $table->integer('price');
             $table->timestamps();
         });
     }

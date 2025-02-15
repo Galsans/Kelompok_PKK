@@ -10,13 +10,17 @@
                     <!-- Room Image -->
                     <div class="row">
                         <div class="col-12">
-                            @if ($rooms->img === null)
+                            {{-- @if ($rooms->img === null)
                                 <img src="{{ asset('land/assets/img/alt-features.png') }}" alt=""
                                     class="img-fluid rounded shadow-sm mb-4 w-50">
                             @else
-                                <img src="{{ Storage::url($rooms->img) }}" alt="Room Image"
-                                    class="img-fluid rounded shadow-sm mb-4 w-50">
-                            @endif
+                            @endif --}}
+                            <img src="{{ Storage::url($rooms->img) }}" alt="Room Image"
+                                class="img-fluid rounded shadow-sm mb-4 w-50">
+
+                            {{-- @php
+                                dd(Storage::url($rooms->img));
+                            @endphp --}}
                         </div>
                     </div>
 
@@ -51,6 +55,7 @@
                             <i class="mdi mdi-door text-primary details-icon"></i>
                             <div class="details-label">Room No</div>
                             <div class="details-value">: {{ $rooms->no_room }}</div>
+                            {{-- <div class="details-value">: {{ $rooms->img }}</div> --}}
                         </div>
 
                         <!-- Room Type -->

@@ -28,23 +28,23 @@
                                 enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <!-- Type Room Select -->
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="exampleSelectTypeRoom">Code Booking</label>
                                     <input type="text" class="form-control" value="{{ $kode_bookings }}"
-                                        name="code_booking" readonly>
+                                        name="code_booking">
                                     @error('code_booking')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label for="exampleSelectTypeRoom">Type Rooms</label>
                                     <select class="form-select text-dark" id="exampleSelectTypeRoom" name="type_room"
                                         required>
                                         <option selected disabled>--Select Type Room--</option>
+                                        <option value="standard">Standard</option>
                                         <option value="suite">Suite</option>
                                         <option value="deluxe">Deluxe</option>
-                                        <option value="standard">Standard</option>
                                     </select>
                                     @error('type_room')
                                         <span class="text-danger">{{ $message }}</span>
@@ -60,7 +60,24 @@
                                     @enderror
                                 </div>
 
-                                <!-- Jumlah -->
+                                <!-- Check In Input -->
+                                <div class="form-group">
+                                    <label for="exampleInputPhone">Check In</label>
+                                    <input type="date" class="form-control" name="check_in">
+                                    @error('check_in')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <!-- Check Out Input -->
+                                <div class="form-group">
+                                    <label for="exampleInputPhone">Check Out</label>
+                                    <input type="date" class="form-control" name="check_out">
+                                    @error('check_out')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <!-- Jumlah -->
                                 <div class="form-group">
                                     <label for="exampleSelectJumlahTamu">Jumlah Tamu</label>
@@ -71,7 +88,6 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-
 
                                 <!-- Submit Buttons -->
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -89,13 +105,13 @@
                                         let message = "";
 
                                         switch (this.value) {
+                                            case "deluxe":
+                                                maxGuest = 7;
+                                                message = "Jumlah tamu total hanya ada 7 untuk tipe Deluxe.";
+                                                break;
                                             case "suite":
                                                 maxGuest = 5;
                                                 message = "Jumlah tamu total hanya ada 5 untuk tipe Suite.";
-                                                break;
-                                            case "deluxe":
-                                                maxGuest = 4;
-                                                message = "Jumlah tamu total hanya ada 4 untuk tipe Deluxe.";
                                                 break;
                                             case "standard":
                                                 maxGuest = 2;
@@ -117,24 +133,24 @@
                                     });
                                 });
 
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    const typeRoomSelect = document.getElementById('exampleSelectTypeRoom');
-                                    const facilitiesTextarea = document.getElementById('exampleInputFacilities');
+                                // document.addEventListener('DOMContentLoaded', function() {
+                                //     const typeRoomSelect = document.getElementById('exampleSelectTypeRoom');
+                                //     const facilitiesTextarea = document.getElementById('exampleInputFacilities');
 
-                                    // Mapping type_room to facilities
-                                    const facilitiesMap = {
-                                        suite: 'TV, WiFi, Pool',
-                                        deluxe: 'TV, WiFi',
-                                        standard: 'WiFi'
-                                    };
+                                //     // Mapping type_room to facilities
+                                //     const facilitiesMap = {
+                                //         suite: 'TV, WiFi, Pool',
+                                //         deluxe: 'TV, WiFi',
+                                //         standard: 'WiFi'
+                                //     };
 
-                                    // Update textarea when type_room changes
-                                    typeRoomSelect.addEventListener('change', function() {
-                                        const selectedType = this.value;
-                                        facilitiesTextarea.value = facilitiesMap[selectedType] ||
-                                            ''; // Set value based on the selected type_room
-                                    });
-                                });
+                                //     // Update textarea when type_room changes
+                                //     typeRoomSelect.addEventListener('change', function() {
+                                //         const selectedType = this.value;
+                                //         facilitiesTextarea.value = facilitiesMap[selectedType] ||
+                                //             ''; // Set value based on the selected type_room
+                                //     });
+                                // });
                             </script>
                         </div>
                     </div>

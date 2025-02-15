@@ -17,7 +17,7 @@ return new class extends Migration
             $table->json('facilities');
             $table->enum('type_room', ['suite', 'deluxe', 'standard']);
             $table->integer('price');
-            $table->enum('status', ['tersedia', 'terisi'])->default('tersedia');
+            $table->enum('status', ['tersedia', 'terisi', 'maintenance'])->default('tersedia');
             $table->string('img')->nullable();
             $table->timestamps();
         });

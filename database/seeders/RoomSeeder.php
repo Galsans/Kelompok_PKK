@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Rooms;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class RoomSeeder extends Seeder
 {
@@ -17,22 +19,30 @@ class RoomSeeder extends Seeder
         $types = ['suite', 'deluxe', 'standard'];
         $statuses = ['tersedia', 'terisi'];
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 13; $i++) {
+            $type_room = $types[array_rand($types)]; // Pilih type_room secara acak
+
+            // Tentukan harga berdasarkan type_room yang dipilih
+            $price = match ($type_room) {
+                'standard' => 100000,
+                'suite' => 300000,
+                'deluxe' => 500000,
+            };
+
             $rooms[] = [
                 'no_room' => 'K-' . str_pad($i, 3, '0', STR_PAD_LEFT),
-                'type_room' => $types[array_rand($types)],
+                'type_room' => $type_room,
                 'facilities' => json_encode(['Wi-Fi', 'TV', 'AC']),
-                'price' => rand(500000, 2000000),
-                'status' => $statuses[array_rand($statuses)],
-                'img' => null,
+                'price' => $price,
+                // 'status' => $statuses[array_rand($statuses)],
+                'status' => 'tersedia',
+                'img' => 'rooms/' . $i . '.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
         }
 
-        // DB::table('rooms')->insert($rooms);
-        foreach ($rooms as $room) {
-            Rooms::create($room);
-        }
+        // Masukkan semua data sekaligus untuk efisiensi
+        DB::table('rooms')->insert($rooms);
     }
 }

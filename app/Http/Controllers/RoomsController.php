@@ -53,7 +53,6 @@ class RoomsController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'facilities' => ['required', 'string'],
-            'price' => ['required', 'numeric'],
             'type_room' => ['required', 'string', 'in:suite,deluxe,standard'],
             'status' => ['required', 'string', 'in:tersedia,terisi'],
             'img' => ['required', 'image', 'mimes:jpg,jpeg,png'],
@@ -63,20 +62,36 @@ class RoomsController extends Controller
             return redirect()->back()->withErrors($validate->errors())->withInput();
         }
 
-        $input = $request->all();
-        $facilitiesArray = explode(',', $request->facilities);
+        $validatedData = $validate->validated();
+        $facilitiesArray = explode(',', $validatedData['facilities']);
         $itemCount = Rooms::count() + 1;
         $sequenceNumber = str_pad($itemCount, 3, '0', STR_PAD_LEFT);
 
+        // Tentukan harga berdasarkan type_room
+        $price = match ($validatedData['type_room']) {
+            'standard' => 100000,
+            'deluxe' => 300000,
+            'suite' => 500000,
+        };
 
-        $input['img'] = $request->file('img')->store('public/rooms');
-        $input['facilities'] = json_encode($facilitiesArray);
-        $input['no_room'] = 'K-' . $sequenceNumber;
+        // Simpan gambar dengan path yang aman
+        $imagePath = $request->file('img')->store('rooms', 'public');
 
-        Rooms::create($input);
+        // Masukkan data ke dalam array sebelum dikirim ke database
+        $roomData = [
+            'facilities' => json_encode($facilitiesArray),
+            'type_room' => $validatedData['type_room'],
+            'status' => $validatedData['status'],
+            'price' => $price,
+            'img' => $imagePath,
+            'no_room' => 'K-' . $sequenceNumber,
+        ];
+
+        Rooms::create($roomData);
 
         return redirect()->route('rooms.index')->with('success', 'Berhasil Menyimpan Data');
     }
+
 
     /**
      * Display the specified resource.
@@ -116,14 +131,18 @@ class RoomsController extends Controller
         // $input = $request->all();
         $rooms = Rooms::find($id);
         $facilitiesArray = explode(',', $request->facilities);
-        $itemCount = $rooms->id;
-        $sequenceNumber = str_pad($itemCount, 3, '0', STR_PAD_LEFT);
+        // Tentukan harga berdasarkan type_room
+        $price = match ($validate['type_room']) {
+            'standard' => 100000,
+            'deluxe' => 300000,
+            'suite' => 500000,
+        };
 
         $rooms->type_room = $request->input('type_room');
         $rooms->price = $request->input('price');
         $rooms->status = $request->input('status');
         $rooms->facilities = json_encode($facilitiesArray);
-        $rooms->no_room = 'K-' . $sequenceNumber;
+        $rooms->price = $price;
 
         // Proses file upload jika ada
         if ($request->hasFile('img')) {

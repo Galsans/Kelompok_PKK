@@ -26,6 +26,7 @@
                                             <th>Type Room</th>
                                             <th>Username</th>
                                             <th>Status</th>
+                                            <th>Price</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -50,17 +51,20 @@
                                                             class="badge badge-success text-dark"><b>{{ $items->status }}</b></label>
                                                     @endif
                                                 </td>
+                                                <td> Rp. {{ number_format($items->price, 0, ',', '.') }}</td>
                                                 <td class="d-flex">
-                                                    <a href="{{ route('reservation.show', $items->id) }}"
+                                                    <a href="{{ route('userReservation.show', $items->id) }}"
                                                         class="btn btn-info">Show</a>
-                                                    {{-- <a href="{{ route('reservation.edit', $items->id) }}"
-                                                        class="btn btn-secondary">Edit</a> --}}
-                                                    <form action="{{ route('userReservation.destroy', $items->id) }}"
-                                                        method="POST" onsubmit="return confirm('Are you sure?');">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Remove</button>
-                                                    </form>
+                                                    @if ($items->status !== 'confirm')
+                                                        <form action="{{ route('userReservation.destroy', $items->id) }}"
+                                                            method="POST"
+                                                            onsubmit="return confirm('Are you sure to cancel your reservation?');">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="btn btn-danger">Cancel</button>
+                                                        </form>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @empty

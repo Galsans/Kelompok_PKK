@@ -46,21 +46,21 @@
                                 <div class="form-group">
                                     <label for="exampleInputFacilities">Facilities</label>
                                     <textarea name="facilities" id="exampleInputFacilities" class="form-control"
-                                        placeholder="Enter facilities separated by commas (e.g., wifi,pool,parking)" required></textarea>
+                                        placeholder="Enter facilities separated by commas (e.g., wifi,pool,parking)" required readonly></textarea>
                                     @error('facilities')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <!-- Price Input -->
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="exampleInputPrice">Price</label>
                                     <input type="number" class="form-control" id="exampleInputPrice" name="price"
                                         placeholder="Price" required>
                                     @error('price')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <!-- Status Select -->
                                 <div class="form-group">

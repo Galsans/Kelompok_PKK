@@ -37,14 +37,14 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="exampleInputPrice">Price</label>
                                     <input type="number" class="form-control" id="exampleInputPrice" name="price"
                                         placeholder="Price" value="{{ $rooms->price }}" required>
                                     @error('price')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label for="exampleSelectTypeRoom">Type Rooms</label>

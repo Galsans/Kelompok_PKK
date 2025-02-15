@@ -118,34 +118,11 @@ class ReservationController extends Controller
 
     public function confirmReservation(Request $request, $id)
     {
-        $validate = Validator::make($request->all(), [
-            'room_id' => 'required|exists:rooms,id'
-        ]);
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate->errors())->withInput();
-        }
-
         $reservation = Reservation::where('id', $id)->where('status', 'pending')->first();
-
-
-        $rooms = Rooms::where('id', $request->room_id)
-            ->where('type_room', $reservation->type_room)
-            ->where('status', 'tersedia') // Pastikan rooms$rooms tersedia
-            ->first();
-
-        if (!$rooms) {
-            return response()->json(['message' => 'Rooms tidak tersedia atau tidak sesuai dengan type_room'], 400);
-        }
 
         // Update data reser$reservation
         $reservation->update([
             'status' => 'confirm',
-            'room_id' => $request->room_id,
-        ]);
-
-        // Ubah status rooms$rooms menjadi 'occupied'
-        $rooms->update([
-            'status' => 'terisi'
         ]);
 
         return redirect()->back();

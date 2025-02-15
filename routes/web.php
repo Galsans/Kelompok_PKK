@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomsController;
@@ -37,9 +38,11 @@ require __DIR__ . '/auth.php';
 
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('layout.dashboard');
-    })->name('dashboard');
+    // Route::get('/', function () {
+    //     return view('layout.dashboard');
+    // })->name('dashboard');
+
+    Route::get('/', [ComponentController::class, 'dashboard'])->name('dashboard');
 
     // PROFILE
     Route::get('profile', [ProfileController::class, 'edit2'])->name('profile.edit');
@@ -72,6 +75,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::get('reservation', [UserReservation::class, 'index'])->name('userReservation.index');
         Route::get('reservation-create', [UserReservation::class, 'create'])->name('userReservation.create');
         Route::post('reservation-store', [UserReservation::class, 'store'])->name('userReservation.store');
+        Route::get('reservation-detail/{id}', [UserReservation::class, 'show'])->name('userReservation.show');
         Route::delete('reservation-delete/{id}', [UserReservation::class, 'destroy'])->name('userReservation.destroy');
     });
 });

@@ -22,7 +22,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Rooms Tables</h4>
-
                             <form method="GET" action="{{ route('rooms.index') }}">
                                 <div class="row">
                                     <!-- Type Room Filter -->

@@ -52,22 +52,22 @@ class DatabaseSeeder extends Seeder
         // ROOMS
         $this->call(RoomSeeder::class);
 
-        Reservation::create([
-            'user_id' => 2,
-            'room_id' => null,
-            'code_booking' => "BOOK-20250211-5359",
-            'phone' => '076183882772',
-            'type_room' => 'suite',
-            'guest_count' => '2',
-        ]);
+        // Reservation::create([
+        //     'user_id' => 2,
+        //     'room_id' => null,
+        //     'code_booking' => "BOOK-20250211-5359",
+        //     'phone' => '076183882772',
+        //     'type_room' => 'suite',
+        //     'guest_count' => '2',
+        // ]);
 
-        Reservation::create([
-            'user_id' => 3,
-            'room_id' => null,
-            'code_booking' => 1234567822,
-            'type_room' => 'deluxe',
-            'phone' => '076183882711',
-            'guest_count' => '3',
-        ]);
+        // Reservation::create([
+        //     'user_id' => 3,
+        //     'room_id' => null,
+        //     'code_booking' => 1234567822,
+        //     'type_room' => 'deluxe',
+        //     'phone' => '076183882711',
+        //     'guest_count' => '3',
+        // ]);
     }
 }
