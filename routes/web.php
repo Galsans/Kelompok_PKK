@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomsController;
@@ -26,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('landing');
 // });
 
-Route::get('/', [RoomsController::class, 'landing']);
+Route::get('/', [ContactController::class, 'landing'])->name('landing');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile2.edit');
@@ -69,6 +70,11 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::delete('reservation-destroy/{id}', [ReservationController::class, 'destroy'])->name('reservation.destroy');
 
         Route::put('reservation/{id}', [ReservationController::class, 'confirmReservation'])->name('reservation.confirm');
+
+
+        Route::get('contact', [ContactController::class, 'index'])->name('admin.contact');
+        Route::get('contact-reply/{id}', [ContactController::class, 'reply'])->name('contact.reply');
+        Route::put('contact-storeReply/{id}', [ContactController::class, 'storeReply'])->name('contact.storeReply');
     });
 
     Route::prefix('user')->middleware('user')->group(function () {
@@ -77,5 +83,11 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::post('reservation-store', [UserReservation::class, 'store'])->name('userReservation.store');
         Route::get('reservation-detail/{id}', [UserReservation::class, 'show'])->name('userReservation.show');
         Route::delete('reservation-delete/{id}', [UserReservation::class, 'destroy'])->name('userReservation.destroy');
+        Route::get('reservation-edit/{id}', [UserReservation::class, 'edit'])->name('userReservation.edit');
+        Route::put('reservation-update/{id}', [UserReservation::class, 'update'])->name('userReservation.update');
+
+        Route::get('contact', [ContactController::class, 'userIndex'])->name('user.contact');
+        Route::post('contact-create', [ContactController::class, 'store'])->name('post.contact');
+        Route::get('contact-detail/{id}', [ContactController::class, 'show'])->name('contact.show');
     });
 });

@@ -46,6 +46,8 @@
                 <ul>
                     <li><a href="#hero" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#values">Type Rooms</a></li>
+                    <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                     @if (Route::has('login'))
                         @auth
@@ -134,7 +136,7 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Type Room</h2>
+                <h2>Our Type Rooms</h2>
                 {{-- <p>What we value most<br></p> --}}
             </div><!-- End Section Title -->
 
@@ -144,27 +146,33 @@
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="card">
-                            <img src="{{ asset('land/assets/img/values-1.png') }}" class="img-fluid" alt="">
-                            <h3>Ad cupiditate sed est odio</h3>
-                            <p>Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit. Et veritatis id.
+                            <img src="{{ asset('land/assets/img/image/4.jpg') }}" class="img-fluid" alt="">
+                            <h3>Standard</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit consequuntur
+                                cumque maxime nobis, architecto odit reiciendis voluptates dolorem recusandae, saepe
+                                quas, a officia excepturi modi nulla. Nemo incidunt modi exercitationem.
                             </p>
                         </div>
                     </div><!-- End Card Item -->
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="card">
-                            <img src="{{ asset('land/assets/img/values-2.png') }}" class="img-fluid" alt="">
-                            <h3>Voluptatem voluptatum alias</h3>
-                            <p>Repudiandae amet nihil natus in distinctio suscipit id. Doloremque ducimus ea sit non.
+                            <img src="{{ asset('land/assets/img/image/5.jpg') }}" class="img-fluid" alt="">
+                            <h3>Suite</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, asperiores? Sint,
+                                deserunt voluptates mollitia eius exercitationem rem quo. Nam provident autem atque eum
+                                quasi veritatis voluptatum dolor, facere dolorum cum?
                             </p>
                         </div>
                     </div><!-- End Card Item -->
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="card">
-                            <img src="{{ asset('land/assets/img/values-3.png') }}" class="img-fluid" alt="">
-                            <h3>Fugit cupiditate alias nobis.</h3>
-                            <p>Quam rem vitae est autem molestias explicabo debitis sint. Vero aliquid quidem commodi.
+                            <img src="{{ asset('land/assets/img/image/6.jpg') }}" class="img-fluid" alt="">
+                            <h3>Deluxe</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, quo. Dolore corrupti
+                                amet maiores fuga ratione aliquam aspernatur voluptas, tempore dolores numquam tempora
+                                quasi saepe ipsa, eius voluptate qui. Eius!
                             </p>
                         </div>
                     </div><!-- End Card Item -->
@@ -175,308 +183,6 @@
 
         </section><!-- /Values Section -->
 
-        <!-- Services Section -->
-        <section id="services" class="services section">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Services</h2>
-                <p>Check Our Services<br></p>
-            </div><!-- End Section Title -->
-
-            <div class="container">
-                <div class="row gy-4">
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item item-cyan position-relative">
-                            <i class="bi bi-activity icon"></i>
-                            <h3>Nesciunt Mete</h3>
-                            <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores
-                                iure perferendis tempore et consequatur.</p>
-                            <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-item item-orange position-relative">
-                            <i class="bi bi-broadcast icon"></i>
-                            <h3>Eosle Commodi</h3>
-                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum
-                                hic non ut nesciunt dolorem.</p>
-                            <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-item item-teal position-relative">
-                            <i class="bi bi-easel icon"></i>
-                            <h3>Ledo Markt</h3>
-                            <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id
-                                voluptas adipisci eos earum corrupti.</p>
-                            <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-item item-red position-relative">
-                            <i class="bi bi-bounding-box-circles icon"></i>
-                            <h3>Asperiores Commodi</h3>
-                            <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga
-                                sit provident adipisci neque.</p>
-                            <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="service-item item-indigo position-relative">
-                            <i class="bi bi-calendar4-week icon"></i>
-                            <h3>Velit Doloremque.</h3>
-                            <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed
-                                animi at autem alias eius labore.</p>
-                            <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="service-item item-pink position-relative">
-                            <i class="bi bi-chat-square-text icon"></i>
-                            <h3>Dolori Architecto</h3>
-                            <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure.
-                                Corrupti recusandae ducimus enim.</p>
-                            <a href="#" class="read-more stretched-link"><span>Read More</span> <i
-                                    class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div><!-- End Service Item -->
-                </div>
-            </div>
-        </section><!-- /Services Section -->
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio section">
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Portfolio</h2>
-                <p>Check our latest work</p>
-            </div><!-- End Section Title -->
-
-            <div class="container">
-
-                <div class="isotope-layout" data-default-filter="*" data-layout="masonry"
-                    data-sort="original-order">
-
-                    <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-product">Product</li>
-                        <li data-filter=".filter-branding">Branding</li>
-                        <li data-filter=".filter-books">Books</li>
-                    </ul><!-- End Portfolio Filters -->
-
-                    <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/app-1.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>App 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/app-1.jpg') }}" title="App 1"
-                                        data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/product-1.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Product 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/product-1.jpg') }}"
-                                        title="Product 1" data-gallery="portfolio-gallery-product"
-                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/branding-1.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Branding 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/branding-1.jpg') }}"
-                                        title="Branding 1" data-gallery="portfolio-gallery-branding"
-                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/books-1.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Books 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/books-1.jpg') }}" title="Branding 1"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/app-2.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>App 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/app-2.jpg') }}" title="App 2"
-                                        data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/product-2.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Product 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/product-2.jpg') }}"
-                                        title="Product 2" data-gallery="portfolio-gallery-product"
-                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/branding-2.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Branding 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/branding-2.jpg') }}"
-                                        title="Branding 2" data-gallery="portfolio-gallery-branding"
-                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/books-2.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Books 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/books-2.jpg') }}" title="Branding 2"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/app-3.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>App 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/app-3.jpg') }}" title="App 3"
-                                        data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/product-3.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Product 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/product-3.jpg') }}"
-                                        title="Product 3" data-gallery="portfolio-gallery-product"
-                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/branding-3.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Branding 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/branding-3.jpg') }}"
-                                        title="Branding 2" data-gallery="portfolio-gallery-branding"
-                                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                            <div class="portfolio-content h-100">
-                                <img src="{{ asset('land/assets/img/portfolio/books-3.jpg') }}" class="img-fluid"
-                                    alt="">
-                                <div class="portfolio-info">
-                                    <h4>Books 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="{{ asset('land/assets/img/portfolio/books-3.jpg') }}" title="Branding 3"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-
-                    </div><!-- End Portfolio Container -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Portfolio Section -->
 
         <!-- Team Section -->
         <section id="team" class="team section">
@@ -488,14 +194,12 @@
 
             <div class="container">
 
-                <div class="row gy-4">
+                <div class="row gy-4 d-flex flex-wrap justify-content-center">
 
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
                         data-aos-delay="100">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{ asset('land/assets/img/team/team-1.jpg') }}" class="img-fluid"
-                                    alt="">
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter-x"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -504,10 +208,48 @@
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>Walter White</h4>
-                                <span>Chief Executive Officer</span>
-                                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
-                                    Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+                                <h4>Agnesia Putri Adinda</h4>
+                                <span>Absen: 2</span>
+                                {{-- <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
+                                    Ipsum exercitationem iure minima enim corporis et voluptate.</p> --}}
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>Galih Putra Rakasiwi</h4>
+                                <span>Absen: 11</span>
+                                {{-- <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
+                                    Ipsum exercitationem iure minima enim corporis et voluptate.</p> --}}
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>Muhammad Dani Luthfi</h4>
+                                <span>Absen: 22</span>
+                                {{-- <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut.
+                                    Ipsum exercitationem iure minima enim corporis et voluptate.</p> --}}
                             </div>
                         </div>
                     </div><!-- End Team Member -->
@@ -516,8 +258,6 @@
                         data-aos-delay="200">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{ asset('land/assets/img/team/team-2.jpg') }}" class="img-fluid"
-                                    alt="">
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter-x"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -526,10 +266,10 @@
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>Sarah Jhonson</h4>
-                                <span>Product Manager</span>
-                                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima
-                                    suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
+                                <h4>Muhammad Ibnu Faqih</h4>
+                                <span>Absen: 24</span>
+                                {{-- <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima
+                                    suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p> --}}
                             </div>
                         </div>
                     </div><!-- End Team Member -->
@@ -538,8 +278,6 @@
                         data-aos-delay="300">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{ asset('land/assets/img/team/team-3.jpg') }}" class="img-fluid"
-                                    alt="">
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter-x"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -548,10 +286,10 @@
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>William Anderson</h4>
-                                <span>CTO</span>
-                                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt.
-                                    Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
+                                <h4>Selvi Hamidah Putri</h4>
+                                <span>Absen: 33</span>
+                                {{-- <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt.
+                                    Voluptates enim aut architecto porro aspernatur molestiae modi.</p> --}}
                             </div>
                         </div>
                     </div><!-- End Team Member -->
@@ -560,8 +298,6 @@
                         data-aos-delay="400">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{ asset('land/assets/img/team/team-4.jpg') }}" class="img-fluid"
-                                    alt="">
                                 <div class="social">
                                     <a href=""><i class="bi bi-twitter-x"></i></a>
                                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -570,10 +306,10 @@
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>Amanda Jepson</h4>
-                                <span>Accountant</span>
-                                <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut
-                                    aliquid doloremque ut possimus ipsum officia.</p>
+                                <h4>Shandika Kanaya Ganespati</h4>
+                                <span>Absen: 34</span>
+                                {{-- <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut
+                                    aliquid doloremque ut possimus ipsum officia.</p> --}}
                             </div>
                         </div>
                     </div><!-- End Team Member -->
@@ -605,8 +341,9 @@
                                 <div class="info-item" data-aos="fade" data-aos-delay="200">
                                     <i class="bi bi-geo-alt"></i>
                                     <h3>Address</h3>
-                                    <p>A108 Adam Street</p>
-                                    <p>New York, NY 535022</p>
+                                    <p>Jl. Batu III, RT.6/RW.1, Gambir, </p>
+                                    <p>Kecamatan Gambir, Kota Jakarta Pusat,</p>
+                                    <p>Daerah Khusus Ibukota Jakarta 10110</p>
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -614,8 +351,8 @@
                                 <div class="info-item" data-aos="fade" data-aos-delay="300">
                                     <i class="bi bi-telephone"></i>
                                     <h3>Call Us</h3>
-                                    <p>+1 5589 55488 55</p>
-                                    <p>+1 6678 254445 41</p>
+                                    <p>+62 881024345979</p>
+                                    {{-- <p>+1 6678 254445 41</p> --}}
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -623,8 +360,7 @@
                                 <div class="info-item" data-aos="fade" data-aos-delay="400">
                                     <i class="bi bi-envelope"></i>
                                     <h3>Email Us</h3>
-                                    <p>info@example.com</p>
-                                    <p>contact@example.com</p>
+                                    <p>kanva@example.com</p>
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -633,7 +369,7 @@
                                     <i class="bi bi-clock"></i>
                                     <h3>Open Hours</h3>
                                     <p>Monday - Friday</p>
-                                    <p>9:00AM - 05:00PM</p>
+                                    {{-- <p>9:00AM - 05:00PM</p> --}}
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -642,11 +378,20 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                            data-aos-delay="200">
-                            <div class="row gy-4">
+                        @guest
+                            <!-- Alert Jika User Belum Login -->
+                            <div class="alert alert-warning text-center" role="alert">
+                                Anda harus <a href="{{ route('login') }}" class="alert-link">Login</a> atau
+                                <a href="{{ route('register') }}" class="alert-link">Register</a> terlebih dahulu untuk
+                                mengirim pesan.
+                            </div>
+                        @endguest
 
-                                <div class="col-md-6">
+                        <form action="{{ route('post.contact') }}" method="POST" class="php-email-form"
+                            data-aos="fade-up" data-aos-delay="200">
+                            @csrf
+                            <div class="row gy-4">
+                                {{-- <div class="col-md-6">
                                     <input type="text" name="name" class="form-control"
                                         placeholder="Your Name" required="">
                                 </div>
@@ -654,15 +399,15 @@
                                 <div class="col-md-6 ">
                                     <input type="email" class="form-control" name="email"
                                         placeholder="Your Email" required="">
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-12">
                                     <input type="text" class="form-control" name="subject" placeholder="Subject"
-                                        required="">
+                                        name="subject" required>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                                    <textarea class="form-control" name="message" rows="6" placeholder="Message" name="message" required></textarea>
                                 </div>
 
                                 <div class="col-md-12 text-center">
@@ -686,36 +431,18 @@
     </main>
 
     <footer id="footer" class="footer">
-
-        <div class="footer-newsletter">
-            <div class="container">
-                <div class="row justify-content-center text-center">
-                    <div class="col-lg-6">
-                        <h4>Join Our Newsletter</h4>
-                        <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-                        <form action="forms/newsletter.php" method="post" class="php-email-form">
-                            <div class="newsletter-form"><input type="email" name="email"><input type="submit"
-                                    value="Subscribe"></div>
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="container footer-top">
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-6 footer-about">
                     <a href="index.html" class="d-flex align-items-center">
-                        <span class="sitename">FlexStart</span>
+                        <span class="sitename">KANVA</span>
                     </a>
                     <div class="footer-contact pt-3">
-                        <p>A108 Adam Street</p>
-                        <p>New York, NY 535022</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                        <p><strong>Email:</strong> <span>info@example.com</span></p>
+                        <p>Jl. Batu III, RT.6/RW.1, Gambir,</p>
+                        <p> Kecamatan Gambir, Kota Jakarta Pusat,</p>
+                        <p>Daerah Khusus Ibukota Jakarta 10110</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+62 881024345979</span></p>
+                        <p><strong>Email:</strong> <span>kanva@gmail.com</span></p>
                     </div>
                 </div>
 
@@ -726,16 +453,6 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
                     </ul>
                 </div>
 
@@ -754,15 +471,8 @@
         </div>
 
         <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">FlexStart</strong> <span>All Rights
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">KANVA</strong> <span>All Rights
                     Reserved</span></p>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
         </div>
 
     </footer>

@@ -68,7 +68,7 @@
                                         <div class="card text-white bg-warning mb-3">
                                             <div class="card-body d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <h5 class="card-title">Total Reservations</h5>
+                                                    <h5 class="card-title">Your Reservations</h5>
                                                     <h2>{{ $reservUser }}</h2>
                                                 </div>
                                                 <i class="mdi mdi-calendar-check mdi-36px"></i>

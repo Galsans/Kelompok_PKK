@@ -87,9 +87,12 @@
                                                     @if ($items->status === 'tersedia')
                                                         <label
                                                             class="badge badge-success text-dark"><b>{{ ucfirst($items->status) }}</b></label>
-                                                    @else
+                                                    @elseif ($items->status === 'tidak tersedia')
                                                         <label
                                                             class="badge badge-warning text-dark"><b>{{ ucfirst($items->status) }}</b></label>
+                                                    @else
+                                                        <label
+                                                            class="badge badge-secondary text-dark"><b>{{ ucfirst($items->status) }}</b></label>
                                                     @endif
                                                 </td>
                                                 <td class="d-flex">

@@ -56,6 +56,8 @@
                                                     <a href="{{ route('userReservation.show', $items->id) }}"
                                                         class="btn btn-info">Show</a>
                                                     @if ($items->status !== 'confirm')
+                                                        <a href="{{ route('userReservation.edit', $items->id) }}"
+                                                            class="btn btn-secondary">Edit</a>
                                                         <form action="{{ route('userReservation.destroy', $items->id) }}"
                                                             method="POST"
                                                             onsubmit="return confirm('Are you sure to cancel your reservation?');">
@@ -69,7 +71,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="7" class="text-center">Data Belum Ada</td>
+                                                <td colspan="8" class="text-center">Data Belum Ada</td>
                                             </tr>
                                         @endforelse
                                     </tbody>

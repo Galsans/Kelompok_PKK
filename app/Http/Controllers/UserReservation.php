@@ -88,6 +88,81 @@ class UserReservation extends Controller
         return redirect()->route('userReservation.index')->with('success', 'Reservasi berhasil dibuat.');
     }
 
+    public function edit($id)
+    {
+        $reservation = Reservation::find($id);
+        return view('user.reservation.edit', compact('reservation'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $validate = Validator::make($request->all(), [
+            "phone" => 'required',
+            "type_room" => 'required|in:suite,deluxe,standard',
+            "guest_count" => 'required|integer|min:1',
+            "check_in" => 'required|date',
+            "check_out" => 'required|date|after:check_in',
+        ]);
+
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate->errors())->withInput();
+        }
+
+        // Ambil reservasi yang akan diperbarui
+        $reservation = Reservation::findOrFail($id);
+
+        // Ambil room lama
+        $oldRoom = Rooms::find($reservation->room_id);
+
+        // Cek apakah type_room berubah
+        $isRoomTypeChanged = $request->type_room !== $oldRoom->type_room;
+
+        if ($isRoomTypeChanged) {
+            // Set room lama menjadi tersedia kembali
+            if ($oldRoom) {
+                $oldRoom->update(['status' => 'tersedia']);
+            }
+
+            // Cari room_id baru berdasarkan type_room yang dipilih
+            $newRoom = Rooms::where('type_room', $request->type_room)
+                ->where('status', 'tersedia')
+                ->first();
+
+            if (!$newRoom) {
+                return redirect()->back()->with('error', 'Tidak ada kamar tersedia untuk tipe ini.');
+            }
+
+            $room = $newRoom;
+        } else {
+            $room = $oldRoom;
+        }
+
+        // Hitung ulang harga dan set ulang tanggal check-in & check-out
+        $checkIn = Carbon::parse($request->check_in)->setTime(10, 0, 0);
+        $checkOut = Carbon::parse($request->check_out)->setTime(10, 0, 0);
+
+        $days = max($checkIn->diffInDays($checkOut), 1);
+        $roomPrice = $room->price ?? 0;
+        $totalPrice = $roomPrice * $days;
+
+        // Update data reservasi
+        $reservation->update([
+            'phone' => $request->phone,
+            'type_room' => $request->type_room,
+            'guest_count' => $request->guest_count,
+            'check_in' => $checkIn->format('Y-m-d H:i:s'),
+            'check_out' => $checkOut->format('Y-m-d H:i:s'),
+            'room_id' => $room->id,
+            'price' => $totalPrice,
+        ]);
+
+        // Set room baru menjadi 'terisi'
+        $room->update(['status' => 'terisi']);
+
+        return redirect()->route('userReservation.index')->with('success', 'Reservasi berhasil diperbarui.');
+    }
+
     public function show($id)
     {
         $reservation = Reservation::find($id);
@@ -97,6 +172,17 @@ class UserReservation extends Controller
     public function destroy($id)
     {
         $reservation = Reservation::find($id);
+        $oldRoom = Rooms::find($reservation->room_id);
+
+        // Cek apakah type_room berubah
+        // $isRoomTypeChanged = $request->type_room !== $oldRoom->type_room;
+
+        if ($oldRoom) {
+            $oldRoom->update(['status' => 'tersedia']);
+        }
+        // if ($oldRoom) {
+        //     // Set room lama menjadi tersedia kembali
+        // }
         $reservation->delete();
 
         return redirect()->back();

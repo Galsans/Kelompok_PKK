@@ -10,8 +10,8 @@
                     <!-- Room Image -->
                     <div class="row">
                         <div class="col-12">
-                            <img src="{{ Storage::url($reservation->img) }}" alt="Room Image"
-                                class="img-fluid rounded shadow-sm mb-4 w-50">
+                            {{-- <img src="{{ Storage::url($reservation->img) }}" alt="Room Image"
+                                class="img-fluid rounded shadow-sm mb-4 w-50"> --}}
                         </div>
                     </div>
 
@@ -26,8 +26,7 @@
                             }
 
                             .details-label {
-                                width: 120px;
-                                /* Adjust width for alignment */
+                                width: 150px;
                                 font-weight: bold;
                             }
 
@@ -41,73 +40,84 @@
                             }
                         </style>
 
+                        <!-- Kode Booking -->
+                        <div class="details-row">
+                            <i class="mdi mdi-ticket-confirmation text-primary details-icon"></i>
+                            <div class="details-label">Kode Booking</div>
+                            <div class="details-value">: {{ $reservation->code_booking }}</div>
+                        </div>
+
                         <!-- Room Number -->
                         <div class="details-row">
                             <i class="mdi mdi-door text-primary details-icon"></i>
                             <div class="details-label">Room No</div>
-                            <div class="details-value">: {{ $reservation->no_room }}</div>
+                            <div class="details-value">: {{ $reservation->rooms->no_room }}</div>
                         </div>
 
                         <!-- Room Type -->
                         <div class="details-row">
-                            <i class="mdi mdi-bed-outline text-success details-icon"></i>
+                            <i class="mdi mdi-bed text-success details-icon"></i>
                             <div class="details-label">Type</div>
-                            <div class="details-value">: {{ $reservation->type_room }}</div>
+                            <div class="details-value">: {{ $reservation->rooms->type_room }}</div>
                         </div>
 
                         <!-- Room Price -->
                         <div class="details-row">
-                            <i class="mdi mdi-cash-multiple text-warning details-icon"></i>
+                            <i class="mdi mdi-cash text-warning details-icon"></i>
                             <div class="details-label">Price</div>
-                            <div class="details-value">: Rp. {{ number_format($reservation->price, 0, ',', '.') }}</div>
+                            <div class="details-value">: Rp. {{ number_format($reservation->rooms->price, 0, ',', '.') }}
+                            </div>
                         </div>
 
-                        <!-- Room Status -->
+                        <!-- Reservation Status -->
                         <div class="details-row">
-                            <i class="mdi mdi-check-circle-outline text-success details-icon"></i>
+                            <i class="mdi mdi-information-outline text-info details-icon"></i>
                             <div class="details-label">Status</div>
                             <div class="details-value">: {{ $reservation->status }}</div>
                         </div>
 
-                        <!-- Room Facilities -->
+                        @php
+                            use Carbon\Carbon;
+                        @endphp
+
+                        <!-- Reservation Check In -->
                         <div class="details-row">
-                            <i class="mdi mdi-clipboard-text-outline text-muted details-icon"></i>
-                            <div class="details-label">Facilities</div>
-                            <div class="details-value">
-                                @php
-                                    $facilities = json_decode($reservation->facilities, true);
-
-                                @endphp
-                                @if (!empty($facilities))
-                                    <ul>
-                                        @foreach ($facilities as $facility)
-                                            <li>{{ $facility }}</li>
-                                        @endforeach
-                                    </ul>
-                                @else
-                                    <span>Facilities not available</span>
-                                @endif
-
-                            </div>
+                            <i class="mdi mdi-calendar-check text-success details-icon"></i>
+                            <div class="details-label">Check In</div>
+                            <div class="details-value">:
+                                {{ Carbon::parse($reservation->check_in)->translatedFormat('l, d F Y - H:i') }}</div>
                         </div>
+
+                        <!-- Reservation Check Out-->
+                        <div class="details-row">
+                            <i class="mdi mdi-calendar-remove text-danger details-icon"></i>
+                            <div class="details-label">Check Out</div>
+                            <div class="details-value">:
+                                {{ Carbon::parse($reservation->check_out)->translatedFormat('l, d F Y - H:i') }}</div>
+                        </div>
+
+
                     </div>
 
-
                     <!-- Action Buttons -->
-                    <div class="mt-4 text-center">
-                        {{-- <a href="/book/{{ $reservation->id }}" class="btn btn-primary btn-lg me-2">
-                            <i class="mdi mdi-calendar-check me-2"></i>Book Now
-                        </a> --}}
+                    <div class="mt-4 d-flex flex-wrap gap-2 justify-content-center align-items-center">
                         <a href="{{ route('reservation.index') }}" class="btn btn-secondary btn-lg">
                             <i class="mdi mdi-arrow-left me-2"></i>Back to List
                         </a>
-                        <a href="{{ route('reservation.edit', $reservation->id) }}" class="btn btn-success btn-lg">
-                            <i class="mdi mdi-pen me-2"></i>Edit List
-                        </a>
+
+                        @if ($reservation->status === 'pending')
+                            <form action="{{ route('reservation.confirm', $reservation->id) }}" method="POST"
+                                onsubmit="return confirm('Are you sure to confirm this reservation?');">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-success btn-lg">Konfirmasi</button>
+                            </form>
+                        @else
+                            <span class="btn btn-secondary btn-lg text-white disabled">Sudah Selesai</span>
+                        @endif
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

@@ -60,10 +60,13 @@
                                                 {{ ucfirst($booking->status) }}
                                             </span>
                                         </td>
-                                        <td>
+                                        <td class="d-flex gap-2">
+                                            <a href="{{ route('reservation.show', $booking->id) }}"
+                                                class="btn btn-info btn-sm">Show</a>
                                             @if ($booking->status == 'pending')
                                                 <form action="{{ route('reservation.confirm', $booking->id) }}"
-                                                    method="POST">
+                                                    method="POST"
+                                                    onsubmit="return confirm('Are you sure to confirm this booking?');">
                                                     @csrf
                                                     @method('PUT')
                                                     <button type="submit"

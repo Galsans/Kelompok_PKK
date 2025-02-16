@@ -28,23 +28,6 @@
                                 enctype="multipart/form-data" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group">
-                                    <label for="exampleInputFacilities">Facilities</label>
-                                    <textarea name="facilities" id="" class="form-control"
-                                        placeholder="Enter facilities separated by commas (e.g., wifi,pool,parking)" required>{{ implode(',', json_decode($rooms->facilities, true) ?? []) }}</textarea>
-                                    @error('facilities')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                {{-- <div class="form-group">
-                                    <label for="exampleInputPrice">Price</label>
-                                    <input type="number" class="form-control" id="exampleInputPrice" name="price"
-                                        placeholder="Price" value="{{ $rooms->price }}" required>
-                                    @error('price')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div> --}}
 
                                 <div class="form-group">
                                     <label for="exampleSelectTypeRoom">Type Rooms</label>
@@ -66,6 +49,24 @@
                                     @enderror
                                 </div>
 
+                                {{-- <div class="form-group">
+                                    <label for="exampleInputFacilities">Facilities</label>
+                                    <textarea name="facilities" id="" class="form-control"
+                                        placeholder="Enter facilities separated by commas (e.g., wifi,pool,parking)" required>{{ implode(',', json_decode($rooms->facilities, true) ?? []) }}</textarea>
+                                    @error('facilities')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div> --}}
+
+                                {{-- <div class="form-group">
+                                    <label for="exampleInputPrice">Price</label>
+                                    <input type="number" class="form-control" id="exampleInputPrice" name="price"
+                                        placeholder="Price" value="{{ $rooms->price }}" required>
+                                    @error('price')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div> --}}
+
                                 <div class="form-group">
                                     <label for="exampleSelectStatus">Status</label>
                                     <select class="form-select text-dark" id="exampleSelectStatus" name="status" required>
@@ -75,6 +76,10 @@
                                         </option>
                                         <option value="terisi"
                                             {{ old('status', $rooms->status) == 'terisi' ? 'selected' : '' }}>Terisi
+                                        </option>
+                                        <option value="maintenance"
+                                            {{ old('status', $rooms->status) == 'maintenance' ? 'selected' : '' }}>
+                                            Maintenance
                                         </option>
                                     </select>
                                     @error('status')
@@ -96,6 +101,27 @@
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                                 <button type="reset" class="btn btn-light">Cancel</button>
                             </form>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const typeRoomSelect = document.getElementById('exampleSelectTypeRoom');
+                                    const facilitiesTextarea = document.getElementById('exampleInputFacilities');
+
+                                    // Mapping type_room to facilities
+                                    const facilitiesMap = {
+                                        suite: 'TV, WiFi, Pool',
+                                        deluxe: 'TV, WiFi',
+                                        standard: 'WiFi'
+                                    };
+
+                                    // Update textarea when type_room changes
+                                    typeRoomSelect.addEventListener('change', function() {
+                                        const selectedType = this.value;
+                                        facilitiesTextarea.value = facilitiesMap[selectedType] ||
+                                            ''; // Set value based on the selected type_room
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>

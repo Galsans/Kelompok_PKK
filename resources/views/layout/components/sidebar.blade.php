@@ -21,11 +21,23 @@
                     <span class="menu-title">Reservation</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.contact') }}">
+                    <i class="menu-icon mdi mdi-message-text"></i>
+                    <span class="menu-title">Contact</span>
+                </a>
+            </li>
         @else
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('userReservation.index') }}">
                     <i class="menu-icon mdi mdi-calendar-range"></i>
                     <span class="menu-title">Reservation</span>
+                </a>
+
+                <a class="nav-link" href="{{ route('user.contact') }}">
+                    <i class="menu-icon mdi mdi-message-text"></i>
+                    <span class="menu-title">Your Comment</span>
                 </a>
             </li>
         @endif

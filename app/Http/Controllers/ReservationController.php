@@ -71,7 +71,7 @@ class ReservationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reservation $reservation, $id)
+    public function show($id)
     {
         $reservation = Reservation::find($id);
         return view('admin.reservation.show', compact('reservation'));
@@ -80,7 +80,7 @@ class ReservationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reservation $reservation, $id)
+    public function edit($id)
     {
         $reservation = Reservation::find($id);
         return view('admin.reservation.edit', compact('reservation'));
@@ -89,7 +89,7 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Reservation $reservation, $id)
+    public function update(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
             //

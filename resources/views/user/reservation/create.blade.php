@@ -54,7 +54,7 @@
                                 <!-- Phone Input -->
                                 <div class="form-group">
                                     <label for="exampleInputPhone">Phone</label>
-                                    <input type="number" class="form-control" name="phone">
+                                    <input type="number" class="form-control" name="phone" required>
                                     @error('phone')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -63,7 +63,7 @@
                                 <!-- Check In Input -->
                                 <div class="form-group">
                                     <label for="exampleInputPhone">Check In</label>
-                                    <input type="date" class="form-control" name="check_in">
+                                    <input type="date" class="form-control" name="check_in" required>
                                     @error('check_in')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -72,7 +72,7 @@
                                 <!-- Check Out Input -->
                                 <div class="form-group">
                                     <label for="exampleInputPhone">Check Out</label>
-                                    <input type="date" class="form-control" name="check_out">
+                                    <input type="date" class="form-control" name="check_out" required>
                                     @error('check_out')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -82,7 +82,7 @@
                                 <div class="form-group">
                                     <label for="exampleSelectJumlahTamu">Jumlah Tamu</label>
                                     <input type="number" class="form-control" name="guest_count" id="guestCountInput"
-                                        min="1">
+                                        min="1" required>
                                     <small id="guestCountMessage" class="text-danger d-none"></small>
                                     @error('guest_count')
                                         <span class="text-danger">{{ $message }}</span>

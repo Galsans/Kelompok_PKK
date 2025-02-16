@@ -69,6 +69,7 @@
                                         <option selected disabled>--Select Status--</option>
                                         <option value="tersedia">Tersedia</option>
                                         <option value="terisi">Terisi</option>
+                                        <option value="maintenance">Maintenance</option>
                                     </select>
                                     @error('status')
                                         <span class="text-danger">{{ $message }}</span>

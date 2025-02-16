@@ -54,7 +54,7 @@ class RoomsController extends Controller
         $validate = Validator::make($request->all(), [
             'facilities' => ['required', 'string'],
             'type_room' => ['required', 'string', 'in:suite,deluxe,standard'],
-            'status' => ['required', 'string', 'in:tersedia,terisi'],
+            'status' => ['required', 'string', 'in:tersedia,terisi,maintenance'],
             'img' => ['required', 'image', 'mimes:jpg,jpeg,png'],
         ]);
 
@@ -114,13 +114,13 @@ class RoomsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Rooms $rooms, $id)
+    public function update(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
-            "facilities" => 'required',
-            "type_room" => 'required',
-            "price" => 'required',
-            "status" => 'required',
+            "facilities" => 'max:255',
+            "type_room" => 'in:standard,suite,deluxe',
+            "price" => 'integer',
+            "status" => 'in:tersedia,tidak tersedia,maintenance',
             'img' => ['image', 'mimes:jpg,jpeg,png'],
         ]);
 
@@ -128,38 +128,42 @@ class RoomsController extends Controller
             return redirect()->back()->withErrors($validate->errors())->withInput();
         }
 
-        // $input = $request->all();
-        $rooms = Rooms::find($id);
-        $facilitiesArray = explode(',', $request->facilities);
+        // Cari room berdasarkan ID
+        $rooms = Rooms::findOrFail($id);
+
+        // Konversi fasilitas ke dalam array
+        $facilitiesArray = explode(',', $request->input('facilities', ''));
+
         // Tentukan harga berdasarkan type_room
-        $price = match ($validate['type_room']) {
+        $price = match ($request->input('type_room')) {
             'standard' => 100000,
             'deluxe' => 300000,
             'suite' => 500000,
+            default => $rooms->price, // Jika tidak ada perubahan, gunakan harga lama
         };
 
+        // Update data
         $rooms->type_room = $request->input('type_room');
-        $rooms->price = $request->input('price');
+        $rooms->price = $price;
         $rooms->status = $request->input('status');
         $rooms->facilities = json_encode($facilitiesArray);
-        $rooms->price = $price;
 
         // Proses file upload jika ada
         if ($request->hasFile('img')) {
-            // Delete the old image if exists
+            // Hapus gambar lama jika ada
             if ($rooms->img) {
                 Storage::delete($rooms->img);
             }
-            // Store the new image
+            // Simpan gambar baru
             $rooms->img = $request->file('img')->store('public/rooms');
         }
 
-        // Update data room
+        // Simpan perubahan
         $rooms->save();
-
 
         return redirect()->route('rooms.index')->with('success', 'Berhasil Menyimpan Data');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -172,11 +176,5 @@ class RoomsController extends Controller
         }
         $rooms->delete();
         return redirect()->route('rooms.index')->with('success', 'Berhasil Menghapus Data');
-    }
-
-    public function landing()
-    {
-        $room = Rooms::all();
-        return view('landing', compact('room'));
     }
 }
