@@ -52,7 +52,6 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'facilities' => ['required', 'string'],
             'type_room' => ['required', 'string', 'in:suite,deluxe,standard'],
             'status' => ['required', 'string', 'in:tersedia,terisi,maintenance'],
             'img' => ['required', 'image', 'mimes:jpg,jpeg,png'],
@@ -63,7 +62,6 @@ class RoomsController extends Controller
         }
 
         $validatedData = $validate->validated();
-        $facilitiesArray = explode(',', $validatedData['facilities']);
         $itemCount = Rooms::count() + 1;
         $sequenceNumber = str_pad($itemCount, 3, '0', STR_PAD_LEFT);
 
@@ -74,12 +72,19 @@ class RoomsController extends Controller
             'suite' => 500000,
         };
 
+        // Tentukan fasilitas berdasarkan type_room
+        $facilities = match ($validatedData['type_room']) {
+            'standard' => ['WiFi', 'TV', 'AC'],
+            'deluxe' => ['WiFi', 'TV', 'AC', 'Mini Bar', 'Bath Tub'],
+            'suite' => ['WiFi', 'TV', 'AC', 'Mini Bar', 'Bath Tub', 'Living Room'],
+        };
+
         // Simpan gambar dengan path yang aman
         $imagePath = $request->file('img')->store('rooms', 'public');
 
         // Masukkan data ke dalam array sebelum dikirim ke database
         $roomData = [
-            'facilities' => json_encode($facilitiesArray),
+            'facilities' => json_encode($facilities), // Simpan dalam format JSON
             'type_room' => $validatedData['type_room'],
             'status' => $validatedData['status'],
             'price' => $price,
@@ -117,9 +122,9 @@ class RoomsController extends Controller
     public function update(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
-            "facilities" => 'max:255',
+            // "facilities" => 'nullable|string|max:255',
             "type_room" => 'in:standard,suite,deluxe',
-            "price" => 'integer',
+            // "price" => 'integer',
             "status" => 'in:tersedia,tidak tersedia,maintenance',
             'img' => ['image', 'mimes:jpg,jpeg,png'],
         ]);
@@ -131,21 +136,29 @@ class RoomsController extends Controller
         // Cari room berdasarkan ID
         $rooms = Rooms::findOrFail($id);
 
-        // Konversi fasilitas ke dalam array
-        $facilitiesArray = explode(',', $request->input('facilities', ''));
+        // Tentukan fasilitas default berdasarkan type_room
+        $defaultFacilities = match ($request->input('type_room')) {
+            'standard' => ['WiFi', 'TV', 'AC'],
+            'deluxe' => ['WiFi', 'TV', 'AC', 'Mini Bar', 'Bath Tub'],
+            'suite' => ['WiFi', 'TV', 'AC', 'Mini Bar', 'Bath Tub', 'Living Room'],
+            // default => json_decode($rooms->facilities, true) // Gunakan fasilitas lama jika tidak ada perubahan
+        };
+
+        // Ambil fasilitas dari input, jika tidak ada gunakan default
+        $facilitiesArray = $request->filled('facilities') ? explode(',', $request->input('facilities')) : $defaultFacilities;
 
         // Tentukan harga berdasarkan type_room
         $price = match ($request->input('type_room')) {
             'standard' => 100000,
             'deluxe' => 300000,
             'suite' => 500000,
-            default => $rooms->price, // Jika tidak ada perubahan, gunakan harga lama
+            // default => $rooms->price, // Gunakan harga lama jika tidak ada perubahan
         };
 
         // Update data
-        $rooms->type_room = $request->input('type_room');
+        $rooms->type_room = $request->input('type_room', $rooms->type_room);
         $rooms->price = $price;
-        $rooms->status = $request->input('status');
+        $rooms->status = $request->input('status', $rooms->status);
         $rooms->facilities = json_encode($facilitiesArray);
 
         // Proses file upload jika ada
@@ -161,8 +174,9 @@ class RoomsController extends Controller
         // Simpan perubahan
         $rooms->save();
 
-        return redirect()->route('rooms.index')->with('success', 'Berhasil Menyimpan Data');
+        return redirect()->route('rooms.index')->with('success', 'Berhasil Memperbarui Data');
     }
+
 
 
     /**

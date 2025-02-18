@@ -30,7 +30,7 @@
                             <img src="{{ asset('land/assets/img/team/team-1.jpg') }}" alt="Profile"
                                 class="rounded-circle w-50">
                         @else
-                            <img src="{{ Storage::url(Auth::user()->img) }}" alt="Profile" class="rounded-circle">
+                            <img src="{{ Storage::url(Auth::user()->img) }}" alt="Profile" class="rounded-circle w-50">
                         @endif
                         <h2 class="mt-3">{{ $user->name }}</h2>
                         {{-- <h3>{{ $user->role }}</h3> --}}
@@ -82,7 +82,7 @@
                                                     class="rounded-circle w-50">
                                             @else
                                                 <img src="{{ Storage::url(Auth::user()->img) }}" alt="Profile"
-                                                    class="rounded-circle">
+                                                    class="rounded-circle w-50">
                                             @endif
                                             <div class="pt-2">
                                                 <input id="img" type="file"

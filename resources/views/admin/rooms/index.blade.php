@@ -53,6 +53,10 @@
                                             <option value="terisi" {{ request('status') == 'terisi' ? 'selected' : '' }}>
                                                 Terisi
                                             </option>
+                                            <option value="maintenance"
+                                                {{ request('status') == 'maintenance' ? 'selected' : '' }}>
+                                                Maintenance
+                                            </option>
                                         </select>
                                     </div>
 
@@ -97,11 +101,9 @@
                                                 </td>
                                                 <td class="d-flex">
                                                     <a href="{{ route('rooms.show', $items->id) }}"
-                                                        class="btn btn-info">Show</a>
+                                                        class="btn btn-info">Detail</a>
                                                     <a href="{{ route('rooms.edit', $items->id) }}"
                                                         class="btn btn-secondary">Edit</a>
-                                                    {{-- <a href="{{ route('rooms.show', $items->id) }}"
-                                                        class="btn btn-danger">Remove</a> --}}
                                                     <form action="{{ route('rooms.destroy', $items->id) }}" method="POST"
                                                         onsubmit="return confirm('Are you sure?');">
                                                         @csrf

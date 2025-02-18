@@ -105,7 +105,7 @@
                             <i class="mdi mdi-arrow-left me-2"></i>Back to List
                         </a>
 
-                        @if ($reservation->status === 'pending')
+                        {{-- @if ($reservation->status === 'pending')
                             <form action="{{ route('reservation.confirm', $reservation->id) }}" method="POST"
                                 onsubmit="return confirm('Are you sure to confirm this reservation?');">
                                 @csrf
@@ -114,6 +114,27 @@
                             </form>
                         @else
                             <span class="btn btn-secondary btn-lg text-white disabled">Sudah Selesai</span>
+                        @endif --}}
+
+                        @if ($reservation->status == 'pending')
+                            <form action="{{ route('reservation.confirm', $reservation->id) }}" method="POST"
+                                onsubmit="return confirm('Are you sure to confirm this reservation?');">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-success btn-sm">Konfirmasi</button>
+                            </form>
+                        @elseif ($reservation->status === 'confirm')
+                            <form action="{{ route('reservation.checkout', $reservation->id) }}" method="POST"
+                                onsubmit="return confirm('Are you sure to check-out this reservation?');">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-primary btn-lg">Check Out</button>
+                            </form>
+                            {{-- <a href="{{ route('reservation.checkout', $booking->id) }}"
+                                                    class="">Check Out</a> --}}
+                        @else
+                            <span class="btn btn-lg btn-success disabled">Sudah
+                                Selesai</span>
                         @endif
                     </div>
                 </div>

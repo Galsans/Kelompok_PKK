@@ -14,10 +14,10 @@ class ComponentController extends Controller
         $roomCount = DB::table('rooms')->count();
         $reservationCount = DB::table('reservations')->count();
 
-        $dashUser = DB::table('rooms')->where('status', 'tersedia')->count();
+        $roomAvailable = DB::table('rooms')->where('status', 'tersedia')->count();
         $auth = Auth::id();
         $reservUser = DB::table('reservations')->where('user_id', $auth)->count();
 
-        return view('dashboard', compact('userCount', 'roomCount', 'reservationCount', 'dashUser', 'reservUser'));
+        return view('dashboard', compact('userCount', 'roomCount', 'reservationCount', 'roomAvailable', 'reservUser'));
     }
 }

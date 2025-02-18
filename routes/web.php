@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomsController;
@@ -70,6 +71,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::delete('reservation-destroy/{id}', [ReservationController::class, 'destroy'])->name('reservation.destroy');
 
         Route::put('reservation/{id}', [ReservationController::class, 'confirmReservation'])->name('reservation.confirm');
+        Route::put('reservation-checkOut/{id}', [ReservationController::class, 'checkOut'])->name('reservation.checkout');
 
 
         Route::get('contact', [ContactController::class, 'index'])->name('admin.contact');
@@ -79,8 +81,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
     Route::prefix('user')->middleware('user')->group(function () {
         Route::get('reservation', [UserReservation::class, 'index'])->name('userReservation.index');
-        Route::get('reservation-create', [UserReservation::class, 'create'])->name('userReservation.create');
-        Route::post('reservation-store', [UserReservation::class, 'store'])->name('userReservation.store');
+        Route::get('reservation-create', [UserReservation::class, 'create'])->name('userReservation.create')->middleware('checkAvailable');
+        Route::post('reservation-store', [UserReservation::class, 'store'])->name('userReservation.store')->middleware('checkAvailable');
         Route::get('reservation-detail/{id}', [UserReservation::class, 'show'])->name('userReservation.show');
         Route::delete('reservation-delete/{id}', [UserReservation::class, 'destroy'])->name('userReservation.destroy');
         Route::get('reservation-edit/{id}', [UserReservation::class, 'edit'])->name('userReservation.edit');
@@ -89,5 +91,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::get('contact', [ContactController::class, 'userIndex'])->name('user.contact');
         Route::post('contact-create', [ContactController::class, 'store'])->name('post.contact');
         Route::get('contact-detail/{id}', [ContactController::class, 'show'])->name('contact.show');
+
+
+        Route::get('generate-pdf', [PDFController::class, 'save'])->name('reservation.pdf');
     });
 });

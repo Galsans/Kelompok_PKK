@@ -43,14 +43,14 @@
                                 </div>
 
                                 <!-- Facilities Textarea -->
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="exampleInputFacilities">Facilities</label>
                                     <textarea name="facilities" id="exampleInputFacilities" class="form-control"
                                         placeholder="Enter facilities separated by commas (e.g., wifi,pool,parking)" required readonly></textarea>
                                     @error('facilities')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <!-- Price Input -->
                                 {{-- <div class="form-group">
@@ -80,6 +80,15 @@
                                 <div class="form-group">
                                     <label>File upload</label>
                                     <input type="file" name="img" class="file-upload" required>
+                                    {{-- <input type="file" name="img" class="file-upload-default">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled
+                                            placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-info py-3"
+                                                type="button">Upload</button>
+                                        </span>
+                                    </div> --}}
                                     @error('img')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

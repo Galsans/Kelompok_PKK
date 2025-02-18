@@ -86,34 +86,28 @@ class ReservationController extends Controller
         return view('admin.reservation.edit', compact('reservation'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
+
+    public function checkOut($id)
     {
-        $validate = Validator::make($request->all(), [
-            //
-        ]);
-        if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate->errors())->withInput();
+        $reservation = Reservation::where('id', $id)->where('status', 'confirm')->first();
+
+
+        if (!$reservation) {
+            return redirect()->back()->with('error', 'Reservasi tidak ditemukan atau status tidak valid.');
         }
-        $reservation = Reservation::find($id);
-        $input = $request->all();
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Reservation $reservation, $id)
-    {
-        $reservation = Reservation::find($id)->delete();
-        return redirect()->route('reservation.index')->with('success', 'Berhasil Menghapus Data');
-    }
+        // Update data room and kamar
+        $reservation->update([
+            'status' => 'checkOut',
+        ]);
 
+        if ($reservation->rooms) {
+            $reservation->rooms->update([
+                'status' => 'maintenance'
+            ]);
+        }
 
-    public function shorting()
-    {
-        // $reservation = Reservation::
+        return redirect()->back()->with('success', 'Checkout berhasil dan status kamar diperbarui.');
     }
 
     public function confirmReservation(Request $request, $id)
@@ -125,6 +119,15 @@ class ReservationController extends Controller
             'status' => 'confirm',
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Konfimasi Berhasil');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    // public function destroy($id)
+    // {
+    //     $reservation = Reservation::find($id)->delete();
+    //     return redirect()->route('reservation.index')->with('success', 'Berhasil Menghapus Data');
+    // }
 }

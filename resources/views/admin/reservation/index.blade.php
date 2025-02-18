@@ -3,7 +3,7 @@
     <div class="content-wrapper">
         <div class="row">
             <div class="col-sm-12">
-                <h2>Konfirmasi Booking</h2>
+                <h2>Konfirmasi Reservations</h2>
                 @if (session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
@@ -56,13 +56,20 @@
                                         <td>{{ $booking->type_room }}</td>
                                         <td>
                                             <span
-                                                class="badge bg-{{ $booking->status == 'pending' ? 'warning' : 'success' }}">
+                                                class="badge bg-{{ $booking->status == 'pending'
+                                                    ? 'warning'
+                                                    : ($booking->status == 'cancel'
+                                                        ? 'danger'
+                                                        : ($booking->status == 'maintenance'
+                                                            ? 'info'
+                                                            : 'success')) }}">
                                                 {{ ucfirst($booking->status) }}
                                             </span>
+
                                         </td>
                                         <td class="d-flex gap-2">
                                             <a href="{{ route('reservation.show', $booking->id) }}"
-                                                class="btn btn-info btn-sm">Show</a>
+                                                class="btn btn-info btn-sm">Detail</a>
                                             @if ($booking->status == 'pending')
                                                 <form action="{{ route('reservation.confirm', $booking->id) }}"
                                                     method="POST"
@@ -71,8 +78,20 @@
                                                     @method('PUT')
                                                     <button type="submit"
                                                         class="btn btn-success btn-sm">Konfirmasi</button>
-                                                @else
-                                                    <span class="text-success">Sudah Selesai</span>
+                                                </form>
+                                            @elseif ($booking->status === 'confirm')
+                                                <form action="{{ route('reservation.checkout', $booking->id) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('Are you sure to check-out this booking?');">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="btn btn-primary btn-sm">Check Out</button>
+                                                </form>
+                                                {{-- <a href="{{ route('reservation.checkout', $booking->id) }}"
+                                                    class="">Check Out</a> --}}
+                                            @else
+                                                <span class="btn btn-sm btn-success disabled">Sudah
+                                                    Selesai</span>
                                             @endif
                                         </td>
                                     </tr>

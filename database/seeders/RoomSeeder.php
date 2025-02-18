@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Rooms;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class RoomSeeder extends Seeder
 {
@@ -17,22 +14,28 @@ class RoomSeeder extends Seeder
     {
         $rooms = [];
         $types = ['suite', 'deluxe', 'standard'];
-        $statuses = ['tersedia', 'terisi'];
+        // $statuses = ['tersedia', 'terisi'];
 
         for ($i = 1; $i <= 13; $i++) {
             $type_room = $types[array_rand($types)]; // Pilih type_room secara acak
 
+            $facilities = match ($type_room) {
+                'standard' => ['WiFi', 'TV', 'AC'],
+                'deluxe' => ['WiFi', 'TV', 'AC', 'Mini Bar', 'Bath Tub'],
+                'suite' => ['WiFi', 'TV', 'AC', 'Mini Bar', 'Bath Tub', 'Living Room'],
+            };
+
             // Tentukan harga berdasarkan type_room yang dipilih
             $price = match ($type_room) {
                 'standard' => 100000,
-                'suite' => 300000,
-                'deluxe' => 500000,
+                'deluxe' => 300000,
+                'suite' => 500000,
             };
 
             $rooms[] = [
                 'no_room' => 'K-' . str_pad($i, 3, '0', STR_PAD_LEFT),
                 'type_room' => $type_room,
-                'facilities' => json_encode(['Wi-Fi', 'TV', 'AC']),
+                'facilities' => json_encode($facilities),
                 'price' => $price,
                 // 'status' => $statuses[array_rand($statuses)],
                 'status' => 'tersedia',

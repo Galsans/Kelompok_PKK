@@ -48,7 +48,7 @@
                                         <td>{{ $items->subject }}</td>
                                         <td>{{ $items->message }}</td>
                                         <td>
-                                            <a href="{{ route('contact.show', $items->id) }}" class="btn btn-info">Show</a>
+                                            <a href="{{ route('contact.show', $items->id) }}" class="btn btn-info">Detail</a>
                                         </td>
                                         {{-- <td class="d-flex">
                                             <a href="{{ route('rooms.show', $items->id) }}"

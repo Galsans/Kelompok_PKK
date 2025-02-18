@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Index - FlexStart Bootstrap Template</title>
+    <title>KANVA</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -81,9 +81,9 @@
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                        <h2 class="mb-4" data-aos="fade-up">MENYATUKAN DENGAN ALAM,MENEMUKAN KEDAMAIAN</h2>
+                        <h2 class="mb-4" data-aos="fade-up">MENYATUKAN DENGAN ALAM, MENEMUKAN KEDAMAIAN</h2>
                         <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
-                            <a href="{{ route('dashboard') }}" class="btn-get-started">Get Started <i
+                            <a href="{{ route('userReservation.create') }}" class="btn-get-started">Book Now <i
                                     class="bi bi-arrow-right"></i></a>
                             {{-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
                                 class="glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"><i
@@ -148,9 +148,9 @@
                         <div class="card">
                             <img src="{{ asset('land/assets/img/image/4.jpg') }}" class="img-fluid" alt="">
                             <h3>Standard</h3>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit consequuntur
-                                cumque maxime nobis, architecto odit reiciendis voluptates dolorem recusandae, saepe
-                                quas, a officia excepturi modi nulla. Nemo incidunt modi exercitationem.
+                            <p>Kamar Standard kami menawarkan kenyamanan dan kemewahan dengan fasilitas seperti tempat
+                                tidur nyaman, kamar mandi modern, TV layar datar, dan akses Wi-Fi gratis. Dapat
+                                menampung 2 tamu.
                             </p>
                         </div>
                     </div><!-- End Card Item -->
@@ -159,9 +159,11 @@
                         <div class="card">
                             <img src="{{ asset('land/assets/img/image/5.jpg') }}" class="img-fluid" alt="">
                             <h3>Suite</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, asperiores? Sint,
-                                deserunt voluptates mollitia eius exercitationem rem quo. Nam provident autem atque eum
-                                quasi veritatis voluptatum dolor, facere dolorum cum?
+                            <p>Kamar suite adalah jenis kamar hotel yang menawarkan ruang lebih luas dan fasilitas lebih
+                                lengkap dibandingkan kamar standar. Biasanya, kamar suite terdiri dari beberapa area
+                                terpisah, seperti kamar tidur, ruang tamu, dan kamar mandi pribadi. Kamar ini dirancang
+                                untuk memberikan kenyamanan dan privasi maksimal, sering dilengkapi dengan fasilitas
+                                premium seperti bathtub, minibar, dan pemandangan yang indah.
                             </p>
                         </div>
                     </div><!-- End Card Item -->
@@ -170,9 +172,9 @@
                         <div class="card">
                             <img src="{{ asset('land/assets/img/image/6.jpg') }}" class="img-fluid" alt="">
                             <h3>Deluxe</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, quo. Dolore corrupti
-                                amet maiores fuga ratione aliquam aspernatur voluptas, tempore dolores numquam tempora
-                                quasi saepe ipsa, eius voluptate qui. Eius!
+                            <p>Kamar Deluxe kami menawarkan kemewahan dan kenyamanan yang tinggi, dengan fasilitas yang
+                                lengkap dan pemandangan yang indah. Dilengkapi dengan tempat tidur mewah, kamar mandi
+                                modern, dan akses Wi-Fi gratis. Dapat menampung 5 tamu.
                             </p>
                         </div>
                     </div><!-- End Card Item -->
@@ -450,15 +452,16 @@
                     <h4>Useful Links</h4>
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#about">About us</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#values">Type Rooms</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#team">Team</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#contact">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-4 col-md-12">
                     <h4>Follow Us</h4>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                    {{-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> --}}
                     <div class="social-links d-flex">
                         <a href=""><i class="bi bi-twitter-x"></i></a>
                         <a href=""><i class="bi bi-facebook"></i></a>

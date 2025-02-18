@@ -15,13 +15,17 @@ class UserReservation extends Controller
     {
         $user = Auth::id();
         $reservation = Reservation::where('user_id', $user)->get();
-        return view('user.reservation.index', compact('reservation'));
+        $availableRooms = Rooms::whereNotIn('status', ['terisi', 'maintenance'])->exists();
+        $hasPendingReservations = Reservation::where('user_id', $user)->where('status', 'pending')->exists();
+
+        return view('user.reservation.index', compact('reservation', 'availableRooms', 'hasPendingReservations'));
     }
 
     public function create()
     {
         // $kode_bookings = 'BOOK-' . date('Ymd') . '-' . rand(1000, 9999);
         // return view('user.reservation.create', compact('kode_bookings'));
+
         return view('user.reservation.create');
     }
 

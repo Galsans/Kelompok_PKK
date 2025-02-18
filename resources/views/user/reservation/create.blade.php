@@ -43,8 +43,8 @@
                                         required>
                                         <option selected disabled>--Select Type Room--</option>
                                         <option value="standard">Standard</option>
-                                        <option value="suite">Suite</option>
                                         <option value="deluxe">Deluxe</option>
+                                        <option value="suite">Suite</option>
                                     </select>
                                     @error('type_room')
                                         <span class="text-danger">{{ $message }}</span>
@@ -105,13 +105,13 @@
                                         let message = "";
 
                                         switch (this.value) {
-                                            case "deluxe":
-                                                maxGuest = 7;
-                                                message = "Jumlah tamu total hanya ada 7 untuk tipe Deluxe.";
-                                                break;
                                             case "suite":
+                                                maxGuest = 7;
+                                                message = "Jumlah tamu total hanya ada 7 untuk tipe Suite.";
+                                                break;
+                                            case "deluxe":
                                                 maxGuest = 5;
-                                                message = "Jumlah tamu total hanya ada 5 untuk tipe Suite.";
+                                                message = "Jumlah tamu total hanya ada 5 untuk tipe Deluxe.";
                                                 break;
                                             case "standard":
                                                 maxGuest = 2;

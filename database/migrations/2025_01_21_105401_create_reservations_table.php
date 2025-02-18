@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('code_booking');
             $table->string('phone');
-            $table->enum('status', ['pending', 'confirm', 'cancel'])->default('pending');
+            $table->enum('status', ['pending', 'confirm', 'cancel', 'checkOut'])->default('pending');
             $table->enum('type_room', ['suite', 'deluxe', 'standard']);
             $table->integer('guest_count');
             $table->datetime('check_in');

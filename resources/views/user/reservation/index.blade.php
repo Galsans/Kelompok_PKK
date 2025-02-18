@@ -7,8 +7,18 @@
                     <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                         <div>
                             <div class="btn-wrapper">
-                                <a href="{{ route('userReservation.create') }}" class="btn btn-primary text-white me-0">
-                                    Create</a>
+                                @if (!$availableRooms)
+                                    <p class="text-danger">Maaf, tidak ada kamar yang tersedia untuk reservasi.</p>
+                                @else
+                                    <a href="{{ route('userReservation.create') }}" class="btn btn-primary text-white me-0">
+                                        Create</a>
+                                @endif
+                                @if ($hasPendingReservations)
+                                    <a href="{{ route('reservation.pdf') }}" class="btn btn-danger">
+                                        <i class="mdi mdi-file-pdf-box"></i> Download PDF
+                                    </a>
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -54,7 +64,7 @@
                                                 <td> Rp. {{ number_format($items->price, 0, ',', '.') }}</td>
                                                 <td class="d-flex">
                                                     <a href="{{ route('userReservation.show', $items->id) }}"
-                                                        class="btn btn-info">Show</a>
+                                                        class="btn btn-info">Detail</a>
                                                     @if ($items->status !== 'confirm')
                                                         <a href="{{ route('userReservation.edit', $items->id) }}"
                                                             class="btn btn-secondary">Edit</a>
