@@ -20,10 +20,10 @@
                                         <option disabled>--Select Type Room--</option>
                                         <option value="standard"
                                             {{ $reservation->type_room == 'standard' ? 'selected' : '' }}>Standard</option>
-                                        <option value="suite" {{ $reservation->type_room == 'suite' ? 'selected' : '' }}>
-                                            Suite</option>
                                         <option value="deluxe" {{ $reservation->type_room == 'deluxe' ? 'selected' : '' }}>
                                             Deluxe</option>
+                                        <option value="suite" {{ $reservation->type_room == 'suite' ? 'selected' : '' }}>
+                                            Suite</option>
                                     </select>
                                     @error('type_room')
                                         <span class="text-danger">{{ $message }}</span>
@@ -79,37 +79,74 @@
                             </form>
 
                             <script>
+                                // document.addEventListener("DOMContentLoaded", function() {
+                                //     const typeRoomSelect = document.getElementById("exampleSelectTypeRoom");
+                                //     const guestCountInput = document.getElementById("guestCountInput");
+                                //     const guestCountMessage = document.getElementById("guestCountMessage");
+
+                                //     function updateMaxGuest() {
+                                //         let maxGuest = 0;
+                                //         let message = "";
+
+                                //         switch (typeRoomSelect.value) {
+                                //             case "deluxe":
+                                //                 maxGuest = 7;
+                                //                 message = "Jumlah tamu maksimal untuk Deluxe adalah 7.";
+                                //                 break;
+                                //             case "suite":
+                                //                 maxGuest = 5;
+                                //                 message = "Jumlah tamu maksimal untuk Suite adalah 5.";
+                                //                 break;
+                                //             case "standard":
+                                //                 maxGuest = 2;
+                                //                 message = "Jumlah tamu maksimal untuk Standard adalah 2.";
+                                //                 break;
+                                //         }
+
+                                //         guestCountInput.setAttribute("max", maxGuest);
+                                //         guestCountMessage.textContent = message;
+                                //         guestCountMessage.classList.remove("d-none");
+                                //     }
+
+                                //     typeRoomSelect.addEventListener("change", updateMaxGuest);
+                                //     updateMaxGuest();
+                                // });
                                 document.addEventListener("DOMContentLoaded", function() {
                                     const typeRoomSelect = document.getElementById("exampleSelectTypeRoom");
                                     const guestCountInput = document.getElementById("guestCountInput");
                                     const guestCountMessage = document.getElementById("guestCountMessage");
 
-                                    function updateMaxGuest() {
+                                    typeRoomSelect.addEventListener("change", function() {
                                         let maxGuest = 0;
                                         let message = "";
 
-                                        switch (typeRoomSelect.value) {
-                                            case "deluxe":
-                                                maxGuest = 7;
-                                                message = "Jumlah tamu maksimal untuk Deluxe adalah 7.";
-                                                break;
+                                        switch (this.value) {
                                             case "suite":
+                                                maxGuest = 7;
+                                                message = "Jumlah tamu total hanya ada 7 untuk tipe Suite.";
+                                                break;
+                                            case "deluxe":
                                                 maxGuest = 5;
-                                                message = "Jumlah tamu maksimal untuk Suite adalah 5.";
+                                                message = "Jumlah tamu total hanya ada 5 untuk tipe Deluxe.";
                                                 break;
                                             case "standard":
                                                 maxGuest = 2;
-                                                message = "Jumlah tamu maksimal untuk Standard adalah 2.";
+                                                message = "Jumlah tamu total hanya ada 2 untuk tipe Standard.";
                                                 break;
+                                            default:
+                                                maxGuest = 0;
+                                                message = "";
                                         }
 
-                                        guestCountInput.setAttribute("max", maxGuest);
-                                        guestCountMessage.textContent = message;
-                                        guestCountMessage.classList.remove("d-none");
-                                    }
-
-                                    typeRoomSelect.addEventListener("change", updateMaxGuest);
-                                    updateMaxGuest();
+                                        if (maxGuest > 0) {
+                                            guestCountInput.setAttribute("max", maxGuest);
+                                            guestCountMessage.textContent = message;
+                                            guestCountMessage.classList.remove("d-none");
+                                        } else {
+                                            guestCountInput.removeAttribute("max");
+                                            guestCountMessage.classList.add("d-none");
+                                        }
+                                    });
                                 });
                             </script>
                         </div>

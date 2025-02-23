@@ -148,7 +148,8 @@
                         <div class="card">
                             <img src="{{ asset('land/assets/img/image/4.jpg') }}" class="img-fluid" alt="">
                             <h3>Standard</h3>
-                            <p>Kamar Standard kami menawarkan kenyamanan dan kemewahan dengan fasilitas seperti tempat
+                            <p class="text-justify">Kamar Standard kami menawarkan kenyamanan dan kemewahan dengan
+                                fasilitas seperti tempat
                                 tidur nyaman, kamar mandi modern, TV layar datar, dan akses Wi-Fi gratis. Dapat
                                 menampung 2 tamu.
                             </p>
@@ -159,7 +160,8 @@
                         <div class="card">
                             <img src="{{ asset('land/assets/img/image/5.jpg') }}" class="img-fluid" alt="">
                             <h3>Suite</h3>
-                            <p>Kamar suite adalah jenis kamar hotel yang menawarkan ruang lebih luas dan fasilitas lebih
+                            <p class="text-justify">Kamar suite adalah jenis kamar hotel yang menawarkan ruang lebih
+                                luas dan fasilitas lebih
                                 lengkap dibandingkan kamar standar. Biasanya, kamar suite terdiri dari beberapa area
                                 terpisah, seperti kamar tidur, ruang tamu, dan kamar mandi pribadi. Kamar ini dirancang
                                 untuk memberikan kenyamanan dan privasi maksimal, sering dilengkapi dengan fasilitas
@@ -172,7 +174,8 @@
                         <div class="card">
                             <img src="{{ asset('land/assets/img/image/6.jpg') }}" class="img-fluid" alt="">
                             <h3>Deluxe</h3>
-                            <p>Kamar Deluxe kami menawarkan kemewahan dan kenyamanan yang tinggi, dengan fasilitas yang
+                            <p class="text-justify">Kamar Deluxe kami menawarkan kemewahan dan kenyamanan yang tinggi,
+                                dengan fasilitas yang
                                 lengkap dan pemandangan yang indah. Dilengkapi dengan tempat tidur mewah, kamar mandi
                                 modern, dan akses Wi-Fi gratis. Dapat menampung 5 tamu.
                             </p>
@@ -310,6 +313,26 @@
                             <div class="member-info">
                                 <h4>Shandika Kanaya Ganespati</h4>
                                 <span>Absen: 34</span>
+                                {{-- <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut
+                                    aliquid doloremque ut possimus ipsum officia.</p> --}}
+                            </div>
+                        </div>
+                    </div><!-- End Team Member -->
+
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                        data-aos-delay="400">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>Taufik Ismail</h4>
+                                <span>Absen: 35</span>
                                 {{-- <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut
                                     aliquid doloremque ut possimus ipsum officia.</p> --}}
                             </div>
